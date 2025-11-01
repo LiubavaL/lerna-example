@@ -14,8 +14,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
       - name: Generate new versions
-        run: npm lerna version --exact --conventional-commits --no-private --conventional-graduate  -y --create-release github
+        run: npx lerna version --exact --conventional-commits --no-private --conventional-graduate  -y --create-release github
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish to npm
-        run: npm lerna publish from-package -y
+        run: npx lerna publish from-package -y
