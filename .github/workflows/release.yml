@@ -1,27 +1,6 @@
 name: Publish packages
 
-on:
-  workflow_dispatch:
-    inputs:
-      sha:
-        description: "Commit SHA to release from"
-        required: true
-        type: string
-      dry-run:
-        description: "Run in dry-run mode without actually publishing packages"
-        required: false
-        type: boolean
-        default: false
-      github-release:
-        description: "Create a GitHub release after publishing"
-        required: false
-        type: boolean
-        default: true
-      dist-tag:
-        description: "npm dist tag to publish to"
-        required: false
-        type: string
-        default: "latest"
+on: workflow_dispatch
 jobs:
   release:
     name: Release
