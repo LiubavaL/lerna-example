@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/LiubavaL/lerna-example/compare/header@0.2.0...header@0.3.0) (2025-11-01)
+
+
+* feat(Header)!: update wording ([908fb7f](https://github.com/LiubavaL/lerna-example/commit/908fb7f7deb745c95399df758f7a06d5e15e8a68))
+
+
+### BREAKING CHANGES
+
+* the prop was renamed to 'hello'
+
+
+
+
+
 # 0.2.0 (2025-11-01)
 
 
