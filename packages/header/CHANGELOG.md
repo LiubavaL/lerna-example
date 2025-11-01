@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.4.9 (2025-11-01)</small>
+
+* fix: add some featuer ([0b74927](https://github.com/LiubavaL/lerna-example/commit/0b74927))
+* feat(Header): add some featuer ([ba83c0b](https://github.com/LiubavaL/lerna-example/commit/ba83c0b))
+
+
+
+
+
 ## <small>0.4.8 (2025-11-01)</small>
 
 * feat(Header): sdfsdf ([a5cb5aa](https://github.com/LiubavaL/lerna-example/commit/a5cb5aa))
