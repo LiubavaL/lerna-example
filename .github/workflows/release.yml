@@ -29,6 +29,8 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Show npmrc
         run: cat ~/.npmrc
 
       - name: Set Git identity
