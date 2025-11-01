@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.4.1 (2025-11-01)</small>
+
+* feat(Header): add a new feature ([8358de4](https://github.com/LiubavaL/lerna-example/commit/8358de4))
+* fix: add some common fixes ([a7e15ab](https://github.com/LiubavaL/lerna-example/commit/a7e15ab))
+* feat(Header)!: update header logic ([41bfb92](https://github.com/LiubavaL/lerna-example/commit/41bfb92))
+* refactor(Header)!: make some refactoring ([79f3a45](https://github.com/LiubavaL/lerna-example/commit/79f3a45))
+
+
+### BREAKING CHANGE
+
+* refactor some API
+
+
+
+
 # [0.4.0](https://github.com/LiubavaL/lerna-example/compare/@liubou/header@0.3.1...@liubou/header@0.4.0) (2025-11-01)
 
 
