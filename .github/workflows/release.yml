@@ -30,8 +30,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Show npmrc
-        run: cat .npmrc
+      - name: Create .npmrc for publishing
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
+          echo "@liubou:registry=https://registry.npmjs.org/" >> .npmrc
 
       - name: Set Git identity
         run: |
@@ -42,4 +44,4 @@ jobs:
         run: npx lerna version --exact --conventional-commits --no-private --conventional-graduate  -y --create-release github
 
       - name: Publish to npm
-        run: npx lerna publish from-package -y --registry='https://registry.npmjs.org/'
+        run: npx lerna publish from-package -y
