@@ -17,4 +17,4 @@ jobs:
       - name: Generate new versions
         run: npx lerna version --exact --conventional-commits --no-private --conventional-graduate  -y --create-release github
       - name: Publish to npm
-        run: npx lerna publish from-package -y
+        run: npx lerna publish from-package -y --registry='https://registry.npmjs.org/'
