@@ -31,7 +31,7 @@ jobs:
         run: npm ci
 
       - name: Show npmrc
-        run: cat ~/.npmrc
+        run: cat .npmrc
 
       - name: Set Git identity
         run: |
