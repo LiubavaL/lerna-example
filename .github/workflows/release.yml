@@ -16,6 +16,6 @@ jobs:
       - name: Generate new versions
         run: npx lerna version --exact --conventional-commits --no-private --conventional-graduate  -y --create-release github
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish to npm
         run: npx lerna publish from-package -y
