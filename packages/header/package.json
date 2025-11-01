@@ -1,5 +1,5 @@
 {
-  "name": "header",
+  "name": "@liubou/header",
   "version": "0.3.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
