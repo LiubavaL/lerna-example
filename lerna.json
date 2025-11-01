@@ -6,7 +6,7 @@
     "version": {
       "allowBranch": "main",
       "message": "chore(release): publish",
-      "changelogPreset": "conventionalcommits"
+      "changelogPreset": "angular"
     }
   }
 }
