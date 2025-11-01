@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.4.2 (2025-11-01)</small>
+
+* feat(header): some feature ([4902b92](https://github.com/LiubavaL/lerna-example/commit/4902b92))
+
+
+
+
+
 ## <small>0.4.1 (2025-11-01)</small>
 
 * feat(Header): add a new feature ([8358de4](https://github.com/LiubavaL/lerna-example/commit/8358de4))
