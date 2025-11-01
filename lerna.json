@@ -1,12 +1,11 @@
 {
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "version": "independent",
-
   "command": {
     "version": {
       "allowBranch": "main",
       "message": "chore(release): publish",
-      "changelogPreset": "angular"
+      "changelogPreset": "conventional-changelog-conventionalcommits"
     }
   }
 }
