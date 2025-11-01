@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.4.10 (2025-11-01)</small>
+
+* feature: add some featuer ([23ca50d](https://github.com/LiubavaL/lerna-example/commit/23ca50d))
+
+
+
+
+
 ## <small>0.4.9 (2025-11-01)</small>
 
 * fix: add some featuer ([0b74927](https://github.com/LiubavaL/lerna-example/commit/0b74927))
