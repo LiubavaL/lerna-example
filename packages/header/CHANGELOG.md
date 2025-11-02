@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.0](https://github.com/LiubavaL/lerna-example/compare/@liubou/header@0.5.0...@liubou/header@0.6.0) (2025-11-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Header:** prop names was changed
+
+### Features
+
+* **Footer:** update wording ([17a0c8c](https://github.com/LiubavaL/lerna-example/commit/17a0c8c20beb25d1ef86c8d563de9cc0e52f06f1))
+
+
+### Bug Fixes
+
+* **Footer:** fix a bug ([c5b274a](https://github.com/LiubavaL/lerna-example/commit/c5b274a08cd4dbaae736c1eb1985251ca5cd51e2))
+* **Header:** fix a bug ([71be14c](https://github.com/LiubavaL/lerna-example/commit/71be14c17229c8e785cb876a5476a086ec913b22))
+
+
+
 ## [0.5.0](https://github.com/LiubavaL/lerna-example/compare/@liubou/header@0.4.16...@liubou/header@0.5.0) (2025-11-02)
 
 
