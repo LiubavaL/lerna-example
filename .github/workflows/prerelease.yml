@@ -9,15 +9,11 @@ jobs:
   build:
     name: Build
     uses: ./.github/workflows/build.yml
-    # secrets:
-    #   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   prerelase:
     name: Prerelease
     needs: build
     runs-on: ubuntu-latest
-    secrets:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     permissions:
       contents: write
     steps:
@@ -28,8 +24,6 @@ jobs:
 
       - name: Run setup
         uses: ./.github/actions/setup
-        # with:
-        #   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create .npmrc for publishing
         env:
@@ -42,6 +36,8 @@ jobs:
 
       - name: Generate new versions
         run: npx lerna version --exact --conventional-commits --conventional-prerelease --no-private -y --create-release github
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to npm
         run: npx lerna publish from-package --dist-tag prerelase -y

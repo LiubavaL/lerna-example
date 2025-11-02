@@ -9,15 +9,11 @@ jobs:
   test:
     name: Run tests
     uses: ./.github/workflows/test.yml
-    # secrets:
-    #   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   build:
     name: Build
     uses: ./.github/workflows/build.yml
     needs: test
-    # secrets:
-    #   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   release:
     name: Release
@@ -25,8 +21,6 @@ jobs:
     permissions:
       contents: write
     needs: [build, test]
-    secrets:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -47,6 +41,8 @@ jobs:
 
       - name: Generate new versions
         run: npx lerna version --exact --conventional-commits --no-private --conventional-graduate  -y --create-release github
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to npm
         run: npx lerna publish from-package -y
