@@ -17,7 +17,7 @@ runs:
       env:
         SINCE_FLAG: ${{ steps.resolve-since-flag.outputs.since_flag }}
       run: |
-        changed_packages=${npx lerna ls $SINCE_FLAG --json --loglevel=error}
+        changed_packages=$(npx lerna ls $SINCE_FLAG --json --loglevel=error)
 
         if [[ $changed_packages = "[]" ]]; then
           echo "has_changed_packages=false" >> $GITHUB_OUTPUT
