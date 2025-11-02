@@ -65,11 +65,11 @@ jobs:
         env:
           next_packages: ${{ needs.release.outputs.next-packages-list }}
         run: |
-          cat <<EOF
-          A new release was published:
-          $next_packages
+          echo "A new release was published:""
 
-          Release Notes: <https://github.com/<OWNER>/<REPO>/releases/tag/v0.1.0>
+          for i in "${next_packages[@]}"
+          do
+            echo "- $i | Release Notes:  <https://github.com/<OWNER>/<REPO>/releases/tag/$i>"
           EOF
 
       # - name: Post Slack message in a channel
