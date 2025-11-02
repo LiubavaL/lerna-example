@@ -12,12 +12,12 @@ runs:
     - id: get-since-flag
       shell: bash
       run: |
-        if [[ "$GITHUB_REF" == "refs/heads/master" ]]; then
+        if [[ "$GITHUB_REF" == "refs/heads/main" ]]; then
           since_flag="--since"
-          echo "Running on master branch, checking for all changes."
+          echo "Running on main branch, checking for all changes."
         else 
           since_flag="--since=origin/main...HEAD"
-          echo "Not running on master branch, checking for changes since origin/main."
+          echo "Not running on main branch, checking for changes since origin/main."
         fi
 
         echo "since_flag=$since_flag" >> $GITHUB_OUTPUT
