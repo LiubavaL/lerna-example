@@ -22,6 +22,9 @@ jobs:
     permissions:
       contents: write
     needs: [build, test]
+    outputs:
+      next-packages-list: ${{ steps.get-next-packages-versions.outputs.next-packages-list }}
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -39,6 +42,10 @@ jobs:
           echo "@liubou:registry=https://registry.npmjs.org/" >> .npmrc
 
       - uses: ./.github/actions/git-identity
+      - id: get-next-packages-versions
+        uses: ./.github/actions/get-next-packages-versions
+        with:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate new versions
         run: npx lerna version --exact --conventional-commits --no-private --conventional-graduate  -y --create-release github
@@ -47,3 +54,39 @@ jobs:
 
       - name: Publish to npm
         run: npx lerna publish from-package -y
+
+    notify_slack:
+      name: Notify Slack
+      tuns-on: ubuntu-latest
+      needs: release
+      if: success()
+      steps:
+        - name: Debug notification mesasge
+          env:
+            next_packages: ${{ needs.release.outputs.next-packages-list }}
+          run: |
+            cat <<EOF
+            A new release was published:
+            $next_packages
+
+            Release Notes: <https://github.com/<OWNER>/<REPO>/releases/tag/v0.1.0>
+            EOF
+
+        # - name: Post Slack message in a channel
+        #   uses: slackapi/slack-github-action@1.26.0
+        #   with:
+        #     webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+        #     webhook-type: incoming-webhook
+        #     payload: |
+        #       text: |
+        #         A new release was published:
+        #         ${{ needs.release.outputs.next-packages-list }}
+        #         <https://github.com/<OWNER>/<REPO>/releases/tag/v0.1.0|Release Notes>"
+        #       blocks:
+        #         - type: section
+        #           text:
+        #             type: mrkdwn
+        #             text: |
+        #               *A new release was published:*
+        #               ${{ needs.release.outputs.next-packages-list }}
+        #               <https://github.com/<OWNER>/<REPO>/releases/tag/v0.1.0|Release Notes>"

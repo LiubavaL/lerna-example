@@ -1,0 +1,26 @@
+name: Get next package versions
+description: Get next versions for changed packages.
+
+inputs:
+  GH_TOKEN:
+    description: Github token.
+    required: true
+
+outputs:
+  next-packages-list:
+    description: A list of packages with their new versions.
+    value: ${{ steps.get-next-package-versions.outputs.next-packages-versions }}
+
+runs:
+  using: "composite"
+  steps:
+    - id: get-next-package-versions
+      shell: bash
+      run: |
+        next-packages-versions-json=$(npx lerna version --conventional-commits --yes --no-git-tag-version --no-push --no-changelog --json --loglevel=error)
+
+        next-packages-list=$(echo "$next-packages-versions-json" | jq '.[]' | "\(.name)@\(.version)")
+
+        echo "next-packages-list<<EOF" >> $GITHUB_OUTPUT
+        echo "$next_versions" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
