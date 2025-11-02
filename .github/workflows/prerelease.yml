@@ -2,17 +2,22 @@ name: Prerelease
 
 on: workflow_dispatch
 
+permissions:
+  contents: read
+
 jobs:
   build:
     name: Build
     uses: ./.github/workflows/build.yml
-    secrets:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    # secrets:
+    #   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   prerelase:
     name: Prerelease
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -21,8 +26,17 @@ jobs:
 
       - name: Run setup
         uses: ./.github/actions/setup
-        with:
+        # with:
+        #   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create .npmrc for publishing
+        env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
+          echo "@liubou:registry=https://registry.npmjs.org/" >> .npmrc
+
+      - uses: ./.github/actions/git-identity
 
       - name: Generate new versions
         run: npx lerna version --exact --conventional-commits --conventional-prerelease --no-private -y --create-release github
