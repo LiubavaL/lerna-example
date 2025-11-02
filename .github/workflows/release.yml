@@ -67,9 +67,8 @@ jobs:
         run: |
           echo "A new release was published:"
 
-          for i in "${next_packages[@]}"
-          do
-            echo "- $i | Release Notes:  <https://github.com/<OWNER>/<REPO>/releases/tag/$i>"
+          echo "$next_packages" | while read -r line; do
+            echo "📦 $i | Release Notes:  <https://github.com/<OWNER>/<REPO>/releases/tag/$i>"
           done
 
       # - name: Post Slack message in a channel
