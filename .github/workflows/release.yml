@@ -17,7 +17,7 @@ jobs:
 
   release:
     name: Release
-    if: ${{ jobs.build.outputs.has_changed_packages == 'true' }}
+    if: ${{ needs.build.outputs.has_changed_packages == 'true' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
