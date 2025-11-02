@@ -3,7 +3,7 @@ description: Checks if there are any changed packages in monorepo.
 
 outputs:
   has_changed_packages:
-    description: If there are any changed packages in monorepo.
+    description: Whether there are any changed packages in monorepo.
     value: ${{ steps.check-changed-packages.outputs.has_changed_packages }}
 
 runs:

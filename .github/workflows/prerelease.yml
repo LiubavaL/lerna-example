@@ -12,6 +12,7 @@ jobs:
 
   prerelase:
     name: Prerelease
+    if: ${{ jobs.build.outputs.has_changed_packages == 'true' }}
     needs: build
     runs-on: ubuntu-latest
     permissions:

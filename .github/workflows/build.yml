@@ -2,11 +2,17 @@ name: Build
 
 on:
   workflow_call:
+    outputs:
+      has_changed_packages:
+        description: Whether there are any changed packages in monorepo.
+        value: ${{ jobs.build.outputs.has_changed_packages }}
 
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    outputs:
+      has_changed_packages: ${{ steps.check-changed-packages.outputs.has_changed_packages }}
 
     steps:
       - uses: actions/checkout@v4
