@@ -20,11 +20,11 @@ jobs:
         uses: ./.github/actions/setup
 
       - id: check-changed-packages
-        uses: ./.github/check-changed-packages
+        uses: ./.github/actions/check-changed-packages
 
       - id: resolve-since-flag
         if: ${{ steps.check-changed-packages.outputs.has_changed_packages == 'true' }}
-        uses: ./.github/resolve-lerna-since-flag
+        uses: ./.github/actions/resolve-lerna-since-flag
 
       - name: Test
         if: ${{ steps.check-changed-packages.outputs.has_changed_packages == 'true' }}
