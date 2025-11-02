@@ -1,0 +1,31 @@
+name: Prerelease
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    name: Build
+    uses: ./.github/workflows/build.yml
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  prerelase:
+    name: Prerelease
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run setup
+        uses: ./.github/actions/setup
+        with:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Generate new versions
+        run: npx lerna version --exact --conventional-commits --conventional-prerelease --no-private -y --create-release github
+
+      - name: Publish to npm
+        run: npx lerna publish from-package --dist-tag prerelase -y

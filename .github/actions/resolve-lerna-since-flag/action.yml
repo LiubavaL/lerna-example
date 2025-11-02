@@ -1,0 +1,23 @@
+name: Resolve Lerna --since flag
+description: Determine the --since flag value string for Lerna based on the current branch.
+
+outputs:
+  since_flag:
+    description: The --since flag string value to use with Lerna commands.
+    value: ${{ steps.get-since-flag.outputs.since_flag }}
+
+runs:
+  using: "composite"
+  steps:
+    -id: get-since-flag
+    shell: bash
+    run: |
+      if [[ "$GITHUB_REF" == "refs/heads/master" ]]; then
+        since_flag="--since"
+        echo "Running on master branch, checking for all changes."
+      else 
+        since_flag="--since=origin/main...HEAD"
+        echo "Not running on master branch, checking for changes since origin/main."
+      fi
+
+      echo "since_flag=$since_flag" >> $GITHUB_OUTPUT

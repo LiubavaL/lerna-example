@@ -1,0 +1,36 @@
+name: Build
+
+on:
+  workflow_call
+  # secrets:
+  #   NPM_TOKEN:
+  #     required: true
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run setup
+        uses: ./.github/actions/setup
+        # with:
+        #   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - id: check-changed-packages
+        uses: ./.github/actions/check-changed-packages
+
+      - id: resolve-since-flag
+        if: ${{ steps.check-changed-packages.outputs.has_changed_packages == 'true' }}
+        uses: ./.github/actions/resolve-lerna-since-flag
+
+      - name: Build
+        if: ${{ steps.check-changed-packages.outputs.has_changed_packages == 'true' }}
+        shell: bash
+        env:
+          SINCE_FLAG: ${{ steps.resolve-since-flag.outputs.since_flag }}
+        run: npx lerna run build $SINCE_FLAG --include-dependencies

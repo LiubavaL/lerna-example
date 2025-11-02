@@ -1,0 +1,29 @@
+name: Check changed packages
+description: Checks if there are any changed packages in monorepo.
+
+outputs:
+  has_changed_packages:
+    description: If there are any changed packages in monorepo.
+    value: ${{ steps }}
+
+runs:
+  using: "composite"
+  steps:
+    - id: resolve-since-flag
+      uses: ./.github/actions/resolve-lerna-since-flag
+
+    - id: check-changed-packages
+      shell: bash
+      env:
+        SINCE_FLAG: ${{ steps.resolve-since-flag.outputs.since_flag }}
+      run: |
+        changed_packages=${npx lerna ls $SINCE_FLAG --json --loglevel=error}
+
+        if [[ $changed_packages = "[]" ]]; then
+          echo "has_changed_packages=false" >> $GITHUB_OUTPUT
+          echo "No changes found in packages."
+        else 
+          echo "has_changed_packages=true" >> $GITHUB_OUTPUT
+          echo "Changes were detected in the following packages:"
+          echo "$changed_packages"
+        fi

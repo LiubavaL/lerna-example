@@ -1,10 +1,10 @@
 name: "Setup CI/CD"
 description: "Setup CI/CD environment"
 
-inputs:
-  NPM_TOKEN:
-    description: "npm secret token"
-    required: true
+# inputs:
+#   NPM_TOKEN:
+#     description: "npm secret token"
+#     required: true
 
 runs:
   using: "composite"
@@ -16,5 +16,5 @@ runs:
         registry-url: "https://registry.npmjs.org/"
 
     - name: Install dependencies
-      run: npm ci
       shell: bash
+      run: npm ci
