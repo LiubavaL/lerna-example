@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.0](https://github.com/LiubavaL/lerna-example/compare/@liubou/footer@0.18.0...@liubou/footer@0.20.0) (2025-11-02)
+
+
+### Features
+
+* **Footer:** update wording ([f910848](https://github.com/LiubavaL/lerna-example/commit/f91084829a6859f8e3274ef44320ac41f3ca2755))
+* **Footer:** update wording ([d30ef5c](https://github.com/LiubavaL/lerna-example/commit/d30ef5c48e32b9cc06d17c5de60ce3cecbd39deb))
+
+
+
 ## [0.18.0](https://github.com/LiubavaL/lerna-example/compare/@liubou/footer@0.16.0...@liubou/footer@0.18.0) (2025-11-02)
 
 
