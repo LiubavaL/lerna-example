@@ -9,7 +9,7 @@ inputs:
 outputs:
   next-packages-list:
     description: A list of packages with their new versions.
-    value: ${{ steps.get-next-package-versions.outputs.next-packages-versions }}
+    value: ${{ steps.get-next-package-versions.outputs.next-packages-list }}
 
 runs:
   using: "composite"
