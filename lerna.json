@@ -4,7 +4,8 @@
   "command": {
     "version": {
       "allowBranch": "main",
-      "message": "chore(release): publish"
+      "message": "chore(release): publish",
+      "changelogPreset": "conventional-changelog-conventionalcommits"
     }
   }
 }

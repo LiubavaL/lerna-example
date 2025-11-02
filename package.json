@@ -5,6 +5,7 @@
     "packages/*"
   ],
   "devDependencies": {
+    "conventional-changelog-conventionalcommits": "^9.1.0",
     "lerna": "^7.1.5"
   },
   "volta": {
