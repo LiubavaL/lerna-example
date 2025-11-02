@@ -25,7 +25,7 @@ jobs:
     permissions:
       contents: write
     needs: [build, test]
-    env:
+    secrets:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout repo

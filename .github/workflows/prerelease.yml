@@ -16,6 +16,8 @@ jobs:
     name: Prerelease
     needs: build
     runs-on: ubuntu-latest
+    secrets:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     permissions:
       contents: write
     steps:
