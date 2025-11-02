@@ -1,0 +1,19 @@
+name: "Setup CI/CD"
+description: "Setup CI/CD environment"
+
+inputs:
+  NPM_TOKEN:
+    description: "npm secret token"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        registry-url: "https://registry.npmjs.org/"
+
+    - name: Install dependencies
+      run: npm ci

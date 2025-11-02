@@ -18,17 +18,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Run setup
+        uses: ./.github/actions/setup
         with:
-          node-version: 20
-          registry-url: "https://registry.npmjs.org/"
-
-      - name: Install dependencies
-        run: npm ci
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create .npmrc for publishing
         run: |
@@ -40,7 +35,7 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Generate new versionss
+      - name: Generate new versions
         run: npx lerna version --exact --conventional-commits --no-private --conventional-graduate  -y --create-release github
 
       - name: Publish to npm
