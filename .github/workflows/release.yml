@@ -65,7 +65,7 @@ jobs:
         env:
           next_packages: ${{ needs.release.outputs.next-packages-list }}
         run: |
-          echo "A new release was published:""
+          echo "A new release was published:"
 
           for i in "${next_packages[@]}"
           do
