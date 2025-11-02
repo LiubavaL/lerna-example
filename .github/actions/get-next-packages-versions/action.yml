@@ -17,10 +17,9 @@ runs:
     - id: get-next-package-versions
       shell: bash
       run: |
-        next-packages-versions-json=$(npx lerna version --conventional-commits --yes --no-git-tag-version --no-push --no-changelog --json --loglevel=error)
-
-        next-packages-list=$(echo "$next-packages-versions-json" | jq '.[]' | "\(.name)@\(.version)")
+        next_packages_versions_json=$(npx lerna version --conventional-commits --yes --no-git-tag-version --no-push --no-changelog --json --loglevel=error)
+        next_packages_list=$(echo "$next_packages_versions_json" | jq -r '.[] | "\(.name)@\(.version)"')
 
         echo "next-packages-list<<EOF" >> $GITHUB_OUTPUT
-        echo "$next_versions" >> $GITHUB_OUTPUT
+        echo "$next_packages_list" >> $GITHUB_OUTPUT
         echo "EOF" >> $GITHUB_OUTPUT
