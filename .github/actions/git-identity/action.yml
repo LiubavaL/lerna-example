@@ -1,0 +1,10 @@
+name: Set Git credentials
+description: Defines Git credentials for the author.
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set Git identity
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
