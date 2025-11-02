@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.11](https://github.com/LiubavaL/lerna-example/compare/@liubou/header@0.4.10...@liubou/header@0.4.11) (2025-11-02)
+
+**Note:** Version bump only for package @liubou/header
+
+
+
+
+
 ## <small>0.4.10 (2025-11-01)</small>
 
 * feature: add some featuer ([23ca50d](https://github.com/LiubavaL/lerna-example/commit/23ca50d))
