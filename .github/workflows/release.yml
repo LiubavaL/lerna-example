@@ -6,11 +6,25 @@ permissions:
   contents: read
 
 jobs:
+  test:
+    name: Run tests
+    uses: ./.github/workflows/test.yml
+    # secrets:
+    #   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  build:
+    name: Build
+    uses: ./.github/workflows/build.yml
+    needs: test
+    # secrets:
+    #   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
   release:
     name: Release
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    needs: [build, test]
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -31,16 +45,6 @@ jobs:
           echo "@liubou:registry=https://registry.npmjs.org/" >> .npmrc
 
       - uses: ./.github/actions/git-identity
-
-      - name: Run tests
-        uses: ./.github/workflows/test.yml
-        # secrets:
-        #   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Build
-        uses: ./.github/workflows/build.yml
-        # secrets:
-        #   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Generate new versions
         run: npx lerna version --exact --conventional-commits --no-private --conventional-graduate  -y --create-release github
